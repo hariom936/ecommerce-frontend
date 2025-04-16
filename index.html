@@ -1,15 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Frontend</title>
-    <link rel="stylesheet" href="styles/main.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyStore</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <script defer src="scripts/app.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Our Online Store</h1>
-    </header>
-    <script src="scripts/app.js"></script>
+
+  <!-- Header and Navigation -->
+  <header class="main-header">
+    <div class="logo">🛍️ MyStore</div>
+
+    <nav class="nav-menu">
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-right">
+      <div class="search-bar">
+        <input type="text" placeholder="Search products..." />
+      </div>
+      <div class="cart-icon">
+        🛒<span class="badge">3</span>
+      </div>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav" id="mobileNav">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Biggest Sale of the Year!</h1>
+      <p class="hero-subtitle">Up to 70% off on selected items. Limited time offer.</p>
+      <a href="#products" class="hero-btn">Shop Now</a>
+    </div>
+  </section>
+
 </body>
 </html>
