@@ -152,7 +152,7 @@ body {
   gap: 2rem;
 }
 
-.product-card {
+.product-cart {
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
@@ -160,7 +160,7 @@ body {
   transition: transform 0.2s ease;
 }
 
-.product-card:hover {
+.product-cart:hover {
   transform: translateY(-5px);
 }
 
@@ -187,7 +187,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.add-to-cart-btn {
+.add-to-cart { /* Changed class name to match script */
   background-color: #ff5c5c;
   color: white;
   border: none;
@@ -197,7 +197,7 @@ body {
   transition: background-color 0.3s;
 }
 
-.add-to-cart-btn:hover {
+.add-to-cart:hover {
   background-color: #e04444;
 }
 
@@ -211,16 +211,37 @@ body {
   margin-top: 2rem;
 }
 
+/* Add to cart Notification */
+.add-to-cart-notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.add-to-cart-notification.show {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* Responsive handled by auto-fit grid */
 
 /* Animations */
 @keyframes fadeInUp {
   0% {
-    opacity: 0;
-    transform: translateY(40px);
+      opacity: 0;
+      transform: translateY(40px);
   }
   100% {
-    opacity: 1;
-    transform: translateY(0);
+      opacity: 1;
+      transform: translateY(0);
   }
 }

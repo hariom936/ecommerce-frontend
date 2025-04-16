@@ -8,27 +8,26 @@
     <script defer src="/scripts/app.js"></script>
 </head>
 <body>
-    <!-- Header and Navigation -->
-  <header class="main-header">
-    <div class="logo">🛍️ MyStore</div>
-    <nav class="nav-menu">
-      <ul class="nav-links">
-        <li><a href="#hero-section">Home</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="header-right">
-      <div class="search-bar">
-        <input type="text" placeholder="Search products..." />
-      </div>
-      <div class="cart-icon">
-        🛒<span class="badge">0</span>
-      </div>
-      <div class="hamburger" id="hamburger">&#9776;</div>
-    </div>
-  </header>
+    <header class="main-header">
+        <div class="logo">🛍️ MyStore</div>
+        <nav class="nav-menu">
+            <ul class="nav-links">
+                <li><a href="#hero-section">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <div class="search-bar">
+                <input type="text" placeholder="Search products..." />
+            </div>
+            <div class="cart-icon">
+                <a href="/cart.html">🛒<span class="badge">0</span></a>
+            </div>
+            <div class="hamburger" id="hamburger">&#9776;</div>
+        </div>
+    </header>
 
     <nav class="mobile-nav" id="mobileNav">
         <ul>
@@ -36,6 +35,7 @@
             <li><a href="#">Products</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
+            <li><a href="/cart.html">cart</a></li>
         </ul>
     </nav>
     <section class="hero-section" id="hero-section">
@@ -50,6 +50,7 @@
         <div id="productGrid" class="product-grid"></div>
         <p id="loadingMessage">Loading products...</p>
         <p id="errorMessage" class="error-message"></p>
+        <div id="addTocartNotification" class="add-to-cart-notification">Item added to cart!</div>
     </section>
 </body>
 </html>
