@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile nav toggle
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobileNav');
 
@@ -7,25 +6,33 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
   });
 
-  // Fetch and display products
+  const productGrid = document.getElementById('productGrid');
+  const loadingMessage = document.getElementById('loadingMessage');
+  const errorMessage = document.getElementById('errorMessage');
+
   fetch('https://fakestoreapi.com/products')
-    .then(res => res.json())
-    .then(products => {
-      const productGrid = document.getElementById('productGrid');
-      productGrid.innerHTML = '';
-      products.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.innerHTML = `
-          <img src="${product.image}" alt="${product.title}" class="product-image" loading="lazy">
+    .then((response) => {
+      if (!response.ok) throw new Error('Failed to fetch products.');
+      return response.json();
+    })
+    .then((products) => {
+      loadingMessage.style.display = 'none';
+      products.forEach((product) => {
+        const productCard = document.createElement('div');
+        productCard.classList.add('product-card');
+
+        productCard.innerHTML = `
+          <img class="product-image" src="${product.image}" alt="${product.title}" loading="lazy" />
           <h3 class="product-title">${product.title}</h3>
           <p class="product-price">$${product.price.toFixed(2)}</p>
           <button class="add-to-cart">Add to Cart</button>
         `;
-        productGrid.appendChild(card);
+
+        productGrid.appendChild(productCard);
       });
     })
-    .catch(err => {
-      console.error('Error loading products:', err);
+    .catch((error) => {
+      loadingMessage.style.display = 'none';
+      errorMessage.textContent = `Error loading products: ${error.message}`;
     });
 });

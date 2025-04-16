@@ -134,84 +134,85 @@ body {
 }
 
 /* Product Section */
+/* Product Grid Section */
 .product-section {
   padding: 4rem 2rem;
   background-color: #f7f7f7;
   text-align: center;
 }
+
 .section-title {
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #333;
 }
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
 }
+
 .product-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 1rem;
-  transition: transform 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
 }
+
 .product-card:hover {
   transform: translateY(-5px);
 }
+
 .product-image {
   width: 100%;
   height: 200px;
   object-fit: contain;
-  margin-bottom: 1rem;
+  background-color: #f0f0f0;
 }
+
+.product-details {
+  padding: 1rem;
+}
+
 .product-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-.product-price {
-  font-size: 1.1rem;
-  color: #ff5c5c;
-  margin-bottom: 1rem;
-}
-.add-to-cart {
-  background-color: #ff5c5c;
-  color: #fff;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s;
-}
-.add-to-cart:hover {
-  background-color: #e54040;
+  margin: 0.5rem 0;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .nav-menu {
-    display: none;
-  }
-  .hamburger {
-    display: block;
-  }
-  .hero-title {
-    font-size: 2rem;
-  }
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-  .hero-btn {
-    padding: 0.6rem 1.5rem;
-    font-size: 1rem;
-  }
+.product-price {
+  color: #ff5c5c;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
+
+.add-to-cart-btn {
+  background-color: #ff5c5c;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #e04444;
+}
+
+#errorMessage {
+  color: red;
+  margin-top: 1rem;
+}
+
+#loadingMessage {
+  font-size: 1rem;
+  margin-top: 2rem;
+}
+
+/* Responsive handled by auto-fit grid */
+
 
 /* Animations */
 @keyframes fadeInUp {

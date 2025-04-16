@@ -12,16 +12,14 @@
   <!-- Header and Navigation -->
   <header class="main-header">
     <div class="logo">🛍️ MyStore</div>
-
     <nav class="nav-menu">
       <ul class="nav-links">
-        <li><a href="#">Home</a></li>
+        <li><a href="#heroSection">Home</a></li>
         <li><a href="#products">Products</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-
     <div class="header-right">
       <div class="search-bar">
         <input type="text" placeholder="Search products..." />
@@ -37,7 +35,7 @@
   <nav class="mobile-nav" id="mobileNav">
     <ul>
       <li><a href="#">Home</a></li>
-      <li><a href="#products">Products</a></li>
+      <li><a href="#">Products</a></li>
       <li><a href="#">About</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
@@ -53,11 +51,11 @@
   </section>
 
   <!-- Product Grid Section -->
-  <section id="products" class="product-section">
+  <section class="product-section" id="products">
     <h2 class="section-title">Our Products</h2>
-    <div class="product-grid" id="productGrid">
-      <!-- Dynamic products will be inserted here -->
-    </div>
+    <div id="productGrid" class="product-grid"></div>
+    <p id="loadingMessage">Loading products...</p>
+    <p id="errorMessage" class="error-message"></p>
   </section>
 
 </body>
