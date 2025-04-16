@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details - MyStore</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/product.css" />
+    <script defer src="/scripts/product.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">🛍️ MyStore</div>
+        <nav class="nav-menu">
+            <ul class="nav-links">
+                <li><a href="#hero-section">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <div class="search-bar">
+                <input type="text" placeholder="Search products..." />
+            </div>
+            <div class="cart-icon">
+                🛒<span class="badge">0</span>
+            </div>
+            <div class="hamburger" id="hamburger">&#9776;</div>
+        </div>
+    </header>
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html#hero-section">Home</a></li>
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="product-detail-section">
+        <div class="product-image-gallery">
+            <div class="main-image">
+                <img id="mainProductImage" src="" alt="" loading="lazy">
+            </div>
+        </div>
+        <div class="product-details">
+            <h1 id="productTitle"></h1>
+            <p id="productDescription"></p>
+            <div class="product-options">
+            </div>
+            <div class="quantity-selector">
+                <label for="quantity">Quantity:</label>
+                <button class="quantity-btn minus">-</button>
+                <input type="number" id="quantity" value="1" min="1">
+                <button class="quantity-btn plus">+</button>
+            </div>
+            <p class="product-price">Price: $<span id="productPrice"></span></p>
+            <button class="add-to-cart-btn" id="addToCartBtn">Add to Cart</button>
+            <p id="addToCartMessage" class="success-message"></p>
+            <p id="errorMessage" class="error-message"></p>
+        </div>
+    </section>
+</body>
+</html>

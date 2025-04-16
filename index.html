@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MyStore</title>
-  <link rel="stylesheet" href="styles/main.css" />
-  <script defer src="scripts/app.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyStore</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script defer src="/scripts/app.js"></script>
 </head>
 <body>
-
-  <!-- Header and Navigation -->
+    <!-- Header and Navigation -->
   <header class="main-header">
     <div class="logo">🛍️ MyStore</div>
     <nav class="nav-menu">
       <ul class="nav-links">
-        <li><a href="#heroSection">Home</a></li>
+        <li><a href="#hero-section">Home</a></li>
         <li><a href="#products">Products</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -31,32 +30,26 @@
     </div>
   </header>
 
-  <!-- Mobile Navigation -->
-  <nav class="mobile-nav" id="mobileNav">
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Products</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-content">
-      <h1 class="hero-title">Biggest Sale of the Year!</h1>
-      <p class="hero-subtitle">Up to 70% off on selected items. Limited time offer.</p>
-      <a href="#products" class="hero-btn">Shop Now</a>
-    </div>
-  </section>
-
-  <!-- Product Grid Section -->
-  <section class="product-section" id="products">
-    <h2 class="section-title">Our Products</h2>
-    <div id="productGrid" class="product-grid"></div>
-    <p id="loadingMessage">Loading products...</p>
-    <p id="errorMessage" class="error-message"></p>
-  </section>
-
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="hero-section" id="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Biggest Sale of the Year!</h1>
+            <p class="hero-subtitle">Up to 70% off on selected items. Limited time offer.</p>
+            <a href="#products" class="hero-btn">Shop Now</a>
+        </div>
+    </section>
+    <section class="product-section" id="products">
+        <h2 class="section-title">Our Products</h2>
+        <div id="productGrid" class="product-grid"></div>
+        <p id="loadingMessage">Loading products...</p>
+        <p id="errorMessage" class="error-message"></p>
+    </section>
 </body>
 </html>
