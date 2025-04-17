@@ -232,6 +232,22 @@ body {
   visibility: visible;
 }
 
+/* styles/main.css (add this styling) */
+.logout-button {
+  background-color: #dc3545; /* Example red color */
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
 /* Responsive handled by auto-fit grid */
 
 /* Animations */

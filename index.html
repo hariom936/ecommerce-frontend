@@ -2,81 +2,113 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MyStore</title>
-  <link rel="stylesheet" href="/styles/main.css" />
-  <script defer src="/scripts/app.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyStore</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script defer src="/scripts/app.js"></script>
 </head>
 
 <body>
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js';
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js';
+        import { getAuth, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';
 
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyCCXApThUnkT8JcmS93-PMztRZ-F2Q3FCA",
-      authDomain: "ecommerce-frontend-185ef.firebaseapp.com",
-      projectId: "ecommerce-frontend-185ef",
-      storageBucket: "ecommerce-frontend-185ef.firebasestorage.app",
-      messagingSenderId: "95615363745",
-      appId: "1:95615363745:web:ecb26a2157efe56a0a5ee0"
-    };
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID",
+            measurementId: "YOUR_MEASUREMENT_ID" // Optional
+        };
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
 
-    // Get the Auth service
-    const auth = getAuth(app);
+        // Get the Auth service
+        const auth = getAuth(app);
 
-    // ... rest of your JavaScript code ...
-  </script>
-  <header class="main-header">
-    <div class="logo">🛍️ MyStore</div>
-    <nav class="nav-menu">
-      <ul class="nav-links">
-        <li><a href="#hero-section">Home</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+        document.addEventListener('DOMContentLoaded', () => {
+            const logoutButton = document.getElementById('logoutButton');
+
+            if (logoutButton) {
+                logoutButton.addEventListener('click', async () => {
+                    try {
+                        await signOut(auth);
+                        console.log('Logout successful!');
+                        // Redirect to the login page after logout
+                        window.location.href = '/login.html';
+                    } catch (error) {
+                        console.error('Logout failed:', error.message);
+                        // Optionally display an error message to the user
+                    }
+                });
+            }
+
+            // Optional: Check user authentication state on page load
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    // User is signed in, you can update UI elements here
+                    console.log('User is signed in:', user);
+                    // Example: Update header to show user info or hide login/signup links
+                } else {
+                    // User is signed out
+                    console.log('User is signed out.');
+                    // Example: Redirect to login page if not authenticated
+                    // window.location.href = '/login.html';
+                }
+            });
+        });
+    </script>
+    <header class="main-header">
+        <div class="logo">🛍️ MyStore</div>
+        <nav class="nav-menu">
+            <ul class="nav-links">
+                <li><a href="#hero-section">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <div class="search-bar">
+                <input type="text" placeholder="Search products..." />
+            </div>
+            <div class="cart-icon">
+                <a href="/cart.html">🛒<span class="badge">0</span></a>
+            </div>
+            <button id="logoutButton" class="logout-button">Logout</button>
+            <div class="hamburger" id="hamburger">&#9776;</div>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="/cart.html">cart</a></li>
+        </ul>
     </nav>
-    <div class="header-right">
-      <div class="search-bar">
-        <input type="text" placeholder="Search products..." />
-      </div>
-      <div class="cart-icon">
-        <a href="/cart.html">🛒<span class="badge">0</span></a>
-      </div>
-      <div class="hamburger" id="hamburger">&#9776;</div>
-    </div>
-  </header>
-
-  <nav class="mobile-nav" id="mobileNav">
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Products</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-      <li><a href="/cart.html">cart</a></li>
-    </ul>
-  </nav>
-  <section class="hero-section" id="hero-section">
-    <div class="hero-content">
-      <h1 class="hero-title">Biggest Sale of the Year!</h1>
-      <p class="hero-subtitle">Up to 70% off on selected items. Limited time offer.</p>
-      <a href="#products" class="hero-btn">Shop Now</a>
-    </div>
-  </section>
-  <section class="product-section" id="products">
-    <h2 class="section-title">Our Products</h2>
-    <div id="productGrid" class="product-grid"></div>
-    <p id="loadingMessage">Loading products...</p>
-    <p id="errorMessage" class="error-message"></p>
-    <div id="addTocartNotification" class="add-to-cart-notification">Item added to cart!</div>
-  </section>
+    <section class="hero-section" id="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Biggest Sale of the Year!</h1>
+            <p class="hero-subtitle">Up to 70% off on selected items. Limited time offer.</p>
+            <a href="#products" class="hero-btn">Shop Now</a>
+        </div>
+    </section>
+    <section class="product-section" id="products">
+        <h2 class="section-title">Our Products</h2>
+        <div id="productGrid" class="product-grid"></div>
+        <p id="loadingMessage">Loading products...</p>
+        <p id="errorMessage" class="error-message"></p>
+        <div id="addTocartNotification" class="add-to-cart-notification">Item added to cart!</div>
+    </section>
 </body>
 
 </html>
