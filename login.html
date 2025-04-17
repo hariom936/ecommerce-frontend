@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyStore - Login</title>
+    <link rel="stylesheet" href="/styles/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-form">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" name="email" required>
+                    <span class="error-message" id="loginEmailError"></span>
+                </div>
+                <div class="input-group">
+                    <label for="loginPassword">Password:</label>
+                    <div class="password-input">
+                        <input type="password" id="loginPassword" name="password" required>
+                        <button type="button" class="toggle-password" id="toggleLoginPassword">Show</button>
+                    </div>
+                    <span class="error-message" id="loginPasswordError"></span>
+                </div>
+                <button type="submit" class="auth-button">Login</button>
+            </form>
+            <div class="auth-links">
+                <a href="/signup.html">Don't have an account? Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js';
+        import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCCXApThUnkT8JcmS93-PMztRZ-F2Q3FCA",
+            authDomain: "ecommerce-frontend-185ef.firebaseapp.com",
+            projectId: "ecommerce-frontend-185ef",
+            storageBucket: "ecommerce-frontend-185ef.firebasestorage.app",
+            messagingSenderId: "95615363745",
+            appId: "1:95615363745:web:ecb26a2157efe56a0a5ee0"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Get the Auth service
+        const auth = getAuth(app);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('loginForm');
+            const loginEmailInput = document.getElementById('loginEmail');
+            const loginPasswordInput = document.getElementById('loginPassword');
+            const loginEmailError = document.getElementById('loginEmailError');
+            const loginPasswordError = document.getElementById('loginPasswordError');
+            const toggleLoginPasswordButton = document.getElementById('toggleLoginPassword');
+
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function togglePasswordVisibility(input, button) {
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', type);
+                button.textContent = type === 'password' ? 'Show' : 'Hide';
+            }
+
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                let isValid = true;
+
+                if (!isValidEmail(loginEmailInput.value.trim())) {
+                    loginEmailError.textContent = 'Please enter a valid email address.';
+                    isValid = false;
+                } else {
+                    loginEmailError.textContent = '';
+                }
+
+                if (loginPasswordInput.value.trim() === '') {
+                    loginPasswordError.textContent = 'Password is required.';
+                    isValid = false;
+                } else {
+                    loginPasswordError.textContent = '';
+                }
+
+                if (isValid) {
+                    try {
+                        const userCredential = await signInWithEmailAndPassword(auth, loginEmailInput.value.trim(), loginPasswordInput.value);
+                        const user = userCredential.user;
+                        console.log('Login successful!', user);
+                        window.location.href = '/'; // Redirect to your homepage or dashboard
+                    } catch (error) {
+                        console.error('Login failed:', error.message);
+                        loginPasswordError.textContent = error.message;
+                    }
+                }
+            });
+
+            if (toggleLoginPasswordButton && loginPasswordInput) {
+                toggleLoginPasswordButton.addEventListener('click', () => {
+                    togglePasswordVisibility(loginPasswordInput, toggleLoginPasswordButton);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
